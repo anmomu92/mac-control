@@ -1,0 +1,7 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1698921876" />
+    <testcase name="run_test_lfc_001" classname="test_mac_pause_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="713" time="0.15631771087646484" sim_time_ns="12985.601" ratio_time="83071.84724744526" />
+    <testcase name="run_test_pfc_001" classname="test_mac_pause_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="713" time="0.2752976417541504" sim_time_ns="22284.801" ratio_time="80948.0272261142" />
+  </testsuite>
+</testsuites>

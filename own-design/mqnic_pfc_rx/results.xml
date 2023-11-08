@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1698897076" />
+    <testcase name="test_001" classname="test_mqnic_pfc_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="713" time="6.180654287338257" sim_time_ns="121.601" ratio_time="19.674454248171248" />
+  </testsuite>
+</testsuites>
