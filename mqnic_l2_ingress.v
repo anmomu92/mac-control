@@ -28,7 +28,7 @@ module mqnic_l2_ingress #
     input  wire                             rst,
 
     /*
-     * Receive data input
+     * Receive data input (DATA COMES FROM OUTSIDE)
      */
     input  wire [AXIS_DATA_WIDTH-1:0]       s_axis_tdata,
     input  wire [AXIS_KEEP_WIDTH-1:0]       s_axis_tkeep,
@@ -38,7 +38,7 @@ module mqnic_l2_ingress #
     input  wire [AXIS_USER_WIDTH-1:0]       s_axis_tuser,
 
     /*
-     * Receive data output
+     * Receive data output (DATA IS SENT TO INTERNAL DATAPATH)
      */
     output wire [AXIS_DATA_WIDTH-1:0]       m_axis_tdata,
     output wire [AXIS_KEEP_WIDTH-1:0]       m_axis_tkeep,
@@ -55,6 +55,9 @@ assign m_axis_tvalid = s_axis_tvalid;
 assign s_axis_tready = m_axis_tready;
 assign m_axis_tlast = s_axis_tlast;
 assign m_axis_tuser = s_axis_tuser;
+
+
+
 
 endmodule
 

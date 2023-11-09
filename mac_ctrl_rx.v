@@ -160,7 +160,7 @@ reg s_axis_tready_reg = 1'b0, s_axis_tready_next;
 reg  [DATA_WIDTH-1:0] m_axis_tdata_int;
 reg  [KEEP_WIDTH-1:0] m_axis_tkeep_int;
 reg                   m_axis_tvalid_int;
-reg                   m_axis_tready_int_reg = 1'b0;
+reg                   m_axis_tready_int_reg = 1'b0; // What does it do?
 reg                   m_axis_tlast_int;
 reg  [ID_WIDTH-1:0]   m_axis_tid_int;
 reg  [DEST_WIDTH-1:0] m_axis_tdest_int;
@@ -214,6 +214,7 @@ wire mcf_match = (mcf_eth_dst_match &&
 
 integer k;
 
+
 always @* begin
     read_mcf_next = read_mcf_reg;
     mcf_frame_next = mcf_frame_reg;
@@ -242,7 +243,9 @@ always @* begin
 
     stat_rx_mcf_next = 1'b0;
 
+    // Check that there is valid data
     if ((s_axis_tready || !USE_READY) && s_axis_tvalid) begin
+        // Parse data from s_axis and sending it through mcf
         if (read_mcf_reg) begin
             ptr_next = ptr_reg + 1;
 
@@ -250,11 +253,13 @@ always @* begin
             mcf_dest_next = s_axis_tdest;
             mcf_user_next = s_axis_tuser;
 
+
             `define _HEADER_FIELD_(offset, field) \
                 if (ptr_reg == offset/BYTE_LANES) begin \
                     field = s_axis_tdata[(offset%BYTE_LANES)*8 +: 8]; \
                 end
 
+            // Parse DST, SRC, ETH_TYPE and OPCODE
             `_HEADER_FIELD_(0,  mcf_eth_dst_next[5*8 +: 8])
             `_HEADER_FIELD_(1,  mcf_eth_dst_next[4*8 +: 8])
             `_HEADER_FIELD_(2,  mcf_eth_dst_next[3*8 +: 8])
@@ -277,11 +282,13 @@ always @* begin
                 mcf_params_next = 0;
             end
 
+            // Parse the PRIORITY_ENABLE_VECTOR and the TIME_VECTOR
             for (k = 0; k < MCF_PARAMS_SIZE; k = k + 1) begin
                 if (ptr_reg == (16+k)/BYTE_LANES) begin
                     mcf_params_next[k*8 +: 8] = s_axis_tdata[((16+k)%BYTE_LANES)*8 +: 8];
                 end
             end
+
 
             if (ptr_reg == 15/BYTE_LANES && (!KEEP_ENABLE || s_axis_tkeep[13%BYTE_LANES])) begin
                 // record match at end of opcode field
@@ -295,6 +302,7 @@ always @* begin
             `undef _HEADER_FIELD_
         end
 
+        // End of the packet
         if (s_axis_tlast) begin
             if (s_axis_tuser[0]) begin
                 // frame marked invalid
@@ -315,6 +323,8 @@ always @* begin
     end
 end
 
+
+// Update intermediatte values
 always @(posedge clk) begin
     read_mcf_reg <= read_mcf_next;
     mcf_frame_reg <= mcf_frame_next;
@@ -385,6 +395,7 @@ always @* begin
     store_axis_int_to_output = 1'b0;
     store_axis_int_to_temp = 1'b0;
     store_axis_temp_to_output = 1'b0;
+
 
     if (m_axis_tready_int_reg) begin
         // input is ready
