@@ -1,0 +1,19 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1699976215" />
+    <testcase name="run_test_data_001" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="5.811493873596191" sim_time_ns="159816.001" ratio_time="27499.986144028193" />
+    <testcase name="run_test_data_002" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="20.688220262527466" sim_time_ns="639048.0009999999" ratio_time="30889.46235542099" />
+    <testcase name="run_test_data_003" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="24.170518398284912" sim_time_ns="639048.001" ratio_time="26439.151633807967" />
+    <testcase name="run_test_data_004" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="23.207111120224" sim_time_ns="639048.0009999999" ratio_time="27536.73206843471" />
+    <testcase name="run_test_mcf_001" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.24302005767822266" sim_time_ns="3752.000999999931" ratio_time="15439.058964292859" />
+    <testcase name="run_test_mcf_002" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.5745208263397217" sim_time_ns="14760.001000000164" ratio_time="25690.976416009646" />
+    <testcase name="run_test_mcf_003" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.5681595802307129" sim_time_ns="14760.001000000164" ratio_time="25978.618531797987" />
+    <testcase name="run_test_mcf_004" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.657599925994873" sim_time_ns="14760.000999999698" ratio_time="22445.25952108269" />
+    <testcase name="run_test_tuser_assert_001" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.04066181182861328" sim_time_ns="608.0010000001639" ratio_time="14952.62932608232" />
+    <testcase name="run_test_mcf_filter_001" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.2175006866455078" sim_time_ns="3232.0009999996983" ratio_time="14859.727800617731" />
+    <testcase name="run_stress_test_001" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="3.2492382526397705" sim_time_ns="58288.001000000164" ratio_time="17938.974143445896" />
+    <testcase name="run_stress_test_002" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="8.089595794677734" sim_time_ns="210632.00100000016" ratio_time="26037.394988088046" />
+    <testcase name="run_stress_test_003" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="8.818443536758423" sim_time_ns="205224.0009999997" ratio_time="23272.134152081686" />
+    <testcase name="run_stress_test_004" classname="test_mac_ctrl_rx" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="8.99233078956604" sim_time_ns="210984.00100000016" ratio_time="23462.66011975545" />
+  </testsuite>
+</testsuites>
