@@ -64,7 +64,7 @@ class TB:
         self.sink = AxiStreamSink(AxiStreamBus.from_prefix(dut, "m_axis"), dut.clk, dut.rst)
         self.mcf_source = McfSource(McfBus.from_prefix(dut, "mcf"), dut.clk, dut.rst)
 
-        
+        # unset the pause request signal
         dut.tx_pause_req.setimmediatevalue(0)
 
     def set_idle_generator(self, generator=None):
@@ -76,6 +76,9 @@ class TB:
         if generator:
             self.sink.set_pause_generator(generator())
 
+    print("-------------")
+    print("PRE-DUT-RESET")
+    print("-------------")
     async def reset(self):
         self.dut.rst.setimmediatevalue(0)
         await RisingEdge(self.dut.clk)
@@ -87,9 +90,23 @@ class TB:
         await RisingEdge(self.dut.clk)
         await RisingEdge(self.dut.clk)
 
+    print("-------------")
+    print("POST-DUT-RESET")
+    print("-------------")
+
+
+    print("-------------")
+    print("PRE-DUT-SEND")
+    print("-------------")
     async def send(self, pkt):
         await self.source.send(bytes(pkt))
+    print("-------------")
+    print("POST-DUT-SEND")
+    print("-------------")
 
+    print("-------------")
+    print("PRE-DUT-SEND_MCF")
+    print("-------------")
     async def send_mcf(self, pkt):
         mcf = McfTransaction()
         mcf.eth_dst = int.from_bytes(mac2str(pkt[Ether].dst), 'big')
@@ -100,14 +117,25 @@ class TB:
 
         await self.mcf_source.send(mcf)
 
+    print("-------------")
+    print("POST-DUT-SEND_MCF")
+    print("-------------")
+
+
+    print("-------------")
+    print("PRE-DUT-SEND_RECV")
+    print("-------------")
     async def recv(self):
         rx_frame = await self.sink.recv()
 
         assert not rx_frame.tuser
 
         return Ether(bytes(rx_frame))
+    print("-------------")
+    print("POST-DUT-SEND_RECV")
+    print("-------------")
 
-
+# RUN_TEST_DATA
 async def run_test_data(dut, payload_lengths=None, payload_data=None, idle_inserter=None, backpressure_inserter=None):
 
     tb = TB(dut)
@@ -144,7 +172,13 @@ async def run_test_data(dut, payload_lengths=None, payload_data=None, idle_inser
         cur_id = (cur_id + 1) % max_count
 
     for test_frame in test_frames:
+        print("-------------")
+        print("PRE-TEST-SINK_RECV")
+        print("-------------")
         rx_frame = await tb.sink.recv()
+        print("-------------")
+        print("POST-TEST-SINK_RECV")
+        print("-------------")
 
         assert rx_frame.tdata == test_frame.tdata
         assert rx_frame.tid == test_frame.tid
@@ -177,17 +211,39 @@ async def run_test_mcf(dut, payload_lengths=None, payload_data=None, idle_insert
         test_pkt = eth / (opcode.to_bytes(2, 'big') + payload)
         test_pkts.append(test_pkt.copy())
 
+        print("-------------")
+        print("PRE-MCF-SEND")
+        print("-------------")
         await tb.send_mcf(test_pkt)
+        print("-------------")
+        print("POST-MCF-SEND")
+        print("-------------")
 
         opcode += 1
 
     for test_pkt in test_pkts:
+        print("-------------")
+        print("PRE-MCF-RECV")
+        print("-------------")
         rx_pkt = await tb.recv()
+        print("-------------")
+        print("POST-MCF-RECV")
+        print("-------------")
 
+        # print the received packet
         tb.log.info("RX packet: %s", repr(rx_pkt))
 
         # check prefix as frame gets zero-padded
+        print("-------------")
+        print("PRE-MCF-RECV-ASSERT")
+        print(bytes(rx_pkt))
+        print(bytes(test_pkt))
+        print("Payload: ", payload)
+        print("-------------")
         assert bytes(rx_pkt).find(bytes(test_pkt)) == 0
+        print("-------------")
+        print("POST-MCF-RECV-ASSERT")
+        print("-------------")
 
     assert tb.sink.empty()
 
@@ -452,9 +508,10 @@ def test_mac_ctrl_tx(request, data_width):
 
     parameters = {}
 
-    parameters['DATA_WIDTH'] = data_width
-    parameters['KEEP_ENABLE'] = int(parameters['DATA_WIDTH'] > 8)
-    parameters['KEEP_WIDTH'] = parameters['DATA_WIDTH'] // 8
+    parameters['AXIS_DATA_WIDTH'] = data_width
+    #parameters['KEEP_ENABLE'] = int(parameters['AXIS_DATA_WIDTH'] > 8)
+    parameters['AXIS_KEEP_WIDTH'] = parameters['AXIS_DATA_WIDTH'] // 8
+    parameters['AXIS_USER_WIDTH'] = 1
     parameters['ID_ENABLE'] = 1
     parameters['ID_WIDTH'] = 8
     parameters['DEST_ENABLE'] = 1

@@ -1,0 +1,19 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1700484197" />
+    <testcase name="run_test_data_001" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="5.499967575073242" sim_time_ns="159816.001" ratio_time="29057.626034799257" />
+    <testcase name="run_test_data_002" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="15.057470560073853" sim_time_ns="639048.0009999999" ratio_time="42440.59441792896" />
+    <testcase name="run_test_data_003" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="16.66346025466919" sim_time_ns="639048.001" ratio_time="38350.2580636537" />
+    <testcase name="run_test_data_004" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="17.5580952167511" sim_time_ns="639048.0009999999" ratio_time="36396.2031821267" />
+    <testcase name="run_test_mcf_001" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.41379261016845703" sim_time_ns="8864.000999999931" ratio_time="21421.361286252435" />
+    <testcase name="run_test_mcf_002" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.9394116401672363" sim_time_ns="34632.001000000164" ratio_time="36865.62899501106" />
+    <testcase name="run_test_mcf_003" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.4503631591796875" sim_time_ns="9288.001000000164" ratio_time="20623.358751008327" />
+    <testcase name="run_test_mcf_004" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="1.0179719924926758" sim_time_ns="34664.0009999997" ratio_time="34052.01838129068" />
+    <testcase name="run_test_tuser_assert_001" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.01801586151123047" sim_time_ns="336.0010000001639" ratio_time="18650.28768070361" />
+    <testcase name="run_arb_test_001" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.08061504364013672" sim_time_ns="1584.0009999996983" ratio_time="19648.950474686015" />
+    <testcase name="run_stress_test_001" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="3.0772206783294678" sim_time_ns="57296.001000000164" ratio_time="18619.399448174925" />
+    <testcase name="run_stress_test_002" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="7.783624887466431" sim_time_ns="235432.00100000016" ratio_time="30247.089807617034" />
+    <testcase name="run_stress_test_003" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="7.682224273681641" sim_time_ns="204360.0009999997" ratio_time="26601.670781743775" />
+    <testcase name="run_stress_test_004" classname="test_mqnic_l2_egress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="8.25472640991211" sim_time_ns="230568.00100000016" ratio_time="27931.634502524365" />
+  </testsuite>
+</testsuites>

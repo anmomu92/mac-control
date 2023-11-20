@@ -416,6 +416,14 @@ always @(posedge clk) begin
     end
 end
 
+// initial begin
+//   $monitor("MAC_CTRL_TX. Time = %0t: ", $time,
+//     "Value of s_tdata is %h, s_tkeep %h, s_tvalid %h, s_tready %h, s_tlast %h, s_tuser %h, s_tid %h, ", 
+//     s_axis_tdata, s_axis_tkeep, s_axis_tvalid, s_axis_tready, s_axis_tlast, s_axis_tuser, s_axis_tid,
+//     "m_tdata is %h, m_tkeep %h, m_tvalid %h, m_tready %h, m_tlast %h, m_tuser %h, m_tid %h", 
+//     m_axis_tdata, m_axis_tkeep, m_axis_tvalid, m_axis_tready, m_axis_tlast, m_axis_tuser, m_axis_tid);
+// end
+
 endmodule
 
 `resetall
