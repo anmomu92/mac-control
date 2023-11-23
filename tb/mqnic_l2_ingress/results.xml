@@ -1,0 +1,17 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1700704760" />
+    <testcase name="run_test_mcf_001" classname="test_mqnic_l2_ingress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.02444148063659668" sim_time_ns="192.001" ratio_time="7855.538821674877">
+      <failure message="Test failed with RANDOM_SEED=1700704760" />
+    </testcase>
+    <testcase name="run_test_mcf_002" classname="test_mqnic_l2_ingress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.04934406280517578" sim_time_ns="600.001" ratio_time="12159.537863125954">
+      <failure message="Test failed with RANDOM_SEED=1700704760" />
+    </testcase>
+    <testcase name="run_test_mcf_003" classname="test_mqnic_l2_ingress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.04911303520202637" sim_time_ns="600.001" ratio_time="12216.736300900508">
+      <failure message="Test failed with RANDOM_SEED=1700704760" />
+    </testcase>
+    <testcase name="run_test_mcf_004" classname="test_mqnic_l2_ingress" file="/home/anmomu92/.local/lib/python3.10/site-packages/cocotb/regression.py" lineno="731" time="0.05370283126831055" sim_time_ns="600.001" ratio_time="11172.613916802075">
+      <failure message="Test failed with RANDOM_SEED=1700704760" />
+    </testcase>
+  </testsuite>
+</testsuites>

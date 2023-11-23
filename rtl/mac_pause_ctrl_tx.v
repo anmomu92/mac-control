@@ -30,6 +30,13 @@ THE SOFTWARE.
 
 /*
  * PFC and pause frame transmit handling
+
+This module connects with the mac_ctrl_tx module. it receives either a lfc or pfc
+requests and sends it through the mcf interface. Later on, the MAC control frame
+will be sent through downstream through the AXIS interface.
+
+The request inputs have to be connected to an upstream FIFO that asserts them 
+when they are overflowed.
  */
 module mac_pause_ctrl_tx #
 (
@@ -213,6 +220,7 @@ always @* begin
         end
     end
 
+    // check if MAC pause control is enabled
     if (cfg_tx_lfc_en) begin
         if (!mcf_valid_reg) begin
             if (lfc_req_reg != tx_lfc_req) begin
@@ -235,6 +243,7 @@ always @* begin
         end
     end
 
+    // check if pfc is enabled
     if (PFC_ENABLE && cfg_tx_pfc_en) begin
         if (!mcf_valid_reg) begin
             if (pfc_req_reg != tx_pfc_req) begin

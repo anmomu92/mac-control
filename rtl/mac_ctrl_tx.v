@@ -136,6 +136,10 @@ This module manages the transmission of MAC control frames.  Control frames
 are accepted in parallel, serialized, and merged at a higher priority with
 data traffic.
 
+It is located in the mqnic_l2_egress module. It transfers MAC control frames
+to the AXI stream. It receives an upstream pause request (from a FIFO I guess) upon
+which it  
+
 */
 
 reg send_data_reg = 1'b0, send_data_next;

@@ -148,6 +148,10 @@ checked based on the ethertype and (optionally) MAC addresses.  Matching control
 frames are marked by setting tuser[0] on the data output and forwarded through
 a separate interface for processing.
 
+It is located in the mqnic_l2_ingress module. It parses the MAC control frame
+from the AXI stream and sends it through the mcf interface. At this point, we 
+don't know if the MAC control frame belongs to lfc or pfc.
+
 */
 
 reg read_mcf_reg = 1'b1, read_mcf_next;
